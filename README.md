@@ -1,13 +1,13 @@
 # STA openness (liberalism and intellect)
 
 
-This repository accompanies the paper Titz & Gailer: *Perceived
-Liberalism and Intellect Cannot Be Reduced to a Single Openness
-Dimension: A State-Trace Experiment*
+This repository accompanies the paper *Perceived Liberalism and
+Intellect Cannot Be Reduced to a Single Openness Dimension: A
+State-Trace Experiment*
 
 Note that this repository corresponds to the *article* version of the
-analysis. Compared to the original thesis scripts by Benedikt Gailer,
-the code has been substantially shortened and simplified.
+analysis. Compared to the original thesis scripts, the code has been
+substantially shortened and simplified.
 
 If you require more detailed data handling or additional analyses,
 please refer to the `Main_Study` folder. Be aware, however, that the
@@ -74,7 +74,7 @@ cor.test(d$C05SE, as.numeric(d$iv_se))
 cor.test(d$O98AI, as.numeric(d$iv_ai), method = "s")
 ```
 
-    Warning in cor.test.default(d$O98AI, as.numeric(d$iv_ai), method = "s"): Cannot
+    Warning in cor.test.default(d$O98AI, as.numeric(d$iv_ai), method = "s"): cannot
     compute exact p-value with ties
 
 
@@ -306,10 +306,9 @@ Although the *stacmr* package provides a dedicated function for this
 purpose, it does not produce a publication-ready plot. We therefore
 extract the relevant data and construct the ST plot manually.
 
-Note that in the thesis by Benedikt Gailer, standard errors were not
-calculated correctly and were consequently overestimated. The approach
-used below follows exactly the same procedure as implemented in the
-*stacmr* package.
+Note that in the thesis, standard errors were not calculated correctly
+and were consequently overestimated. The approach used below follows
+exactly the same procedure as implemented in the *stacmr* package.
 
 ``` r
 # Data for the Plot

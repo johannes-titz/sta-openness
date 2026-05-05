@@ -3,9 +3,9 @@ title: "STA openness (liberalism and intellect)"
 format: gfm
 ---
 
-This repository accompanies the paper Titz & Gailer: *Perceived Liberalism and Intellect Cannot Be Reduced to a Single Openness Dimension: A State-Trace Experiment*
+This repository accompanies the paper *Perceived Liberalism and Intellect Cannot Be Reduced to a Single Openness Dimension: A State-Trace Experiment*
 
-Note that this repository corresponds to the *article* version of the analysis. Compared to the original thesis scripts by Benedikt Gailer, the code has been substantially shortened and simplified.
+Note that this repository corresponds to the *article* version of the analysis. Compared to the original thesis scripts, the code has been substantially shortened and simplified.
 
 If you require more detailed data handling or additional analyses, please refer to the `Main_Study` folder. Be aware, however, that the code there is considerably more difficult to follow. In particular, the original implementation relies on the *STACMR-R* scripts, which must be installed manually because they are not properly packaged for R.
 
@@ -179,7 +179,7 @@ Although the *stacmr* package provides a dedicated function for this purpose, it
 does not produce a publication-ready plot. We therefore extract the relevant
 data and construct the ST plot manually.
 
-Note that in the thesis by Benedikt Gailer, standard errors were not calculated
+Note that in the thesis, standard errors were not calculated
 correctly and were consequently overestimated. The approach used below follows
 exactly the same procedure as implemented in the *stacmr* package.
 
