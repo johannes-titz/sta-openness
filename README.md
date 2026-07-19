@@ -28,6 +28,17 @@ please install it first or substitute it with your preferred
 alternative.
 
 ``` r
+# A recent JRP production article uses Charis SIL for body text. The font and its SIL
+# Open Font License are vendored in this repository so figure export does not
+# depend on a machine-wide font installation.
+figure_font <- "Charis SIL"
+font_config <- normalizePath("fonts/fonts.conf", mustWork = TRUE)
+Sys.setenv(FONTCONFIG_FILE = font_config)
+font_match <- system2("fc-match", shQuote(figure_font), stdout = TRUE)
+if (!length(font_match) || !grepl("CharisSIL-Regular.ttf", font_match[[1]], fixed = TRUE)) {
+  stop("The vendored Charis SIL font could not be resolved through fontconfig.")
+}
+
 librarian::shelf(car, readr, dplyr, tidyr, effectsize, psych, lsr,
 devtools, monotonicity/stacmr, tidyverse, simpleCache)
 setCacheDir("cache")
@@ -185,14 +196,16 @@ d_cmr <- as.data.frame(res1$estimate)
 
 # ggplot
 p1 <- ggplot(d_agg, aes(x_mean, y_mean)) +
-  geom_point(data = d_cmr, aes(LibSum, IntSum), color = "grey",
+  geom_point(data = d_cmr, aes(LibSum, IntSum), color = "grey60",
              shape = 5, size = 3) +  # Add predicted Points (Regression)
-  geom_line(data = d_cmr, aes(LibSum, IntSum), color = "grey", linetype = "dashed") +  # grey curve for Regression model
+  geom_line(data = d_cmr, aes(LibSum, IntSum), color = "grey60", linetype = "dashed") +  # grey curve for Regression model
   geom_errorbar(aes(ymin = y_min, ymax = y_max), color = "grey60", width = 0.2) +  # y-Axis Error bars
   geom_errorbarh(aes(xmin = x_min, xmax = x_max), color = "grey60", height = 0.2) +  # Add x-Axis Error Bars
-  geom_point(aes(shape = `Artistic Interest`, color = `Self-Efficacy`), size = 3) +  # Add mean values for Conditions; size = 4 for cex = 1.5
-  scale_shape_manual(values = c(19, 17, 15)) +  # Shapes
-  scale_color_grey(start = 0.2, end = 0.8) +  # Colors
+  geom_point(aes(shape = `Artistic Interest`, fill = `Self-Efficacy`),
+             color = "black", size = 3) +  # open low SE, filled high SE
+  scale_shape_manual(values = c(21, 24, 22)) +  # fillable circle, triangle, square
+  scale_fill_manual(values = c(low = "white", high = "black")) +
+  guides(fill = guide_legend(override.aes = list(shape = 21))) +
 
   labs(
     x = "Liberalism",
@@ -201,8 +214,9 @@ p1 <- ggplot(d_agg, aes(x_mean, y_mean)) +
   # xlim(4, 20) +
   # ylim(4, 20) +
   
-  theme_bw() + 
+  theme_bw(base_family = figure_font) +
   theme(
+    text = element_text(family = figure_font),
     axis.title = element_text(size = 14),
     axis.text = element_text(size = 10),
     legend.title = element_text(size = 12),
@@ -217,7 +231,8 @@ p1 <- ggplot(d_agg, aes(x_mean, y_mean)) +
     legend.justification = c("left", "top")
   ) +
   coord_fixed(ratio = 1) + 
-  annotate("text", 12.7, 11.5, label = "dashed line shows\nbest isotonic model", hjust = 0)
+  annotate("text", 12.7, 11.5, label = "dashed line shows\nbest isotonic model",
+           hjust = 0, family = figure_font)
 ```
 
     Warning: `geom_errorbarh()` was deprecated in ggplot2 4.0.0.
@@ -352,14 +367,16 @@ d_cmr <- as.data.frame(res2$estimate)
 
 # ggplot
 p2 <- ggplot(d_agg, aes(x_mean, y_mean)) +
+  geom_point(data = d_cmr, aes(LibSum, IntSum), color = "grey60",
+             shape = 5, size = 3) +  # Add predicted Points (Regression)
+  geom_line(data = d_cmr, aes(LibSum, IntSum), color = "grey60", linetype = "dashed") +  # grey curve for Regression model
   geom_errorbar(aes(ymin = y_min, ymax = y_max), color = "grey60", width = 0.2) +  # y-Axis Error bars
   geom_errorbarh(aes(xmin = x_min, xmax = x_max), color = "grey60", height = 0.2) +  # Add x-Axis Error Bars
-  geom_point(aes(shape = `Artistic Interest`, color = `Self-Efficacy`), size = 3) +  # Add mean values for Conditions; size = 4 for cex = 1.5
-  scale_shape_manual(values = c(19, 17, 15)) +  # Shapes
-  scale_color_grey(start = 0.2, end = 0.8) +  # Colors
- geom_point(data = d_cmr, aes(LibSum, IntSum), color = "grey",
-             shape = 5, size = 3) +  # Add predicted Points (Regression)
-  geom_line(data = d_cmr, aes(LibSum, IntSum), color = "grey", linetype = "dashed") +  # grey curve for Regression model
+  geom_point(aes(shape = `Artistic Interest`, fill = `Self-Efficacy`),
+             color = "black", size = 3) +  # open low SE, filled high SE
+  scale_shape_manual(values = c(21, 24, 22)) +  # fillable circle, triangle, square
+  scale_fill_manual(values = c(low = "white", high = "black")) +
+  guides(fill = guide_legend(override.aes = list(shape = 21))) +
   labs(
     x = "Liberalism",
     y = "Intellect",
@@ -367,8 +384,9 @@ p2 <- ggplot(d_agg, aes(x_mean, y_mean)) +
    xlim(7, 17.5) +
    ylim(7, 17.5) +
   
-  theme_bw() + 
+  theme_bw(base_family = figure_font) +
   theme(
+    text = element_text(family = figure_font),
     axis.title = element_text(size = 14),
     axis.text = element_text(size = 10),
     legend.title = element_text(size = 12),
@@ -383,7 +401,8 @@ p2 <- ggplot(d_agg, aes(x_mean, y_mean)) +
     legend.justification = c("left", "top")
   ) +
   coord_fixed(ratio = 1) + 
-  annotate("text", 11.4, 12.25, label = "dashed line shows\nbest isotonic model", hjust = 0)
+  annotate("text", 11.4, 12.25, label = "dashed line shows\nbest isotonic model",
+           hjust = 0, family = figure_font)
 p2
 ```
 
