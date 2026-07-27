@@ -64,7 +64,7 @@ View(raw_data)
 #SQ005
 #SQ007
 
-#Item O89
+#Item O98
 #SQ010
 
 #Item C05
@@ -815,7 +815,7 @@ hist(C11_vec_b, main = "Antworten Kompetenz: Bedingung viel Kompetenz",
 
 
 
-#O0: Item O89 Answers for Conditions with low artistic interests
+#O0: Item O98 Answers for Conditions with low artistic interests
 O0_vec_b <- items_stats_b$SQ010[items_stats_b$Gleichung %in% c(2,6)]
 
 table(O0_vec_b)
@@ -826,7 +826,7 @@ hist(O0_vec_b, main = "Antworten Kompetenz: Bedingung wenig Ästhetik",
 
 
 
-#O1: Item O89 Answers for Conditions with high artistic interests 
+#O1: Item O98 Answers for Conditions with high artistic interests
 
 O1_vec_b <- items_stats_b$SQ010[items_stats_b$Gleichung %in% c(1,5)]
 
@@ -836,7 +836,7 @@ table(O1_vec_b)
 hist(O1_vec_b, main = "Antworten Kompetenz: Bedingung viel Ästhetik", 
      xlab = "Zustimmung", xlim = c(0,5))
 
-# OM:  Item O89 Answers for Conditions with moderate artistic interests
+# OM:  Item O98 Answers for Conditions with moderate artistic interests
 
 OM_vec_b <- items_stats_b$SQ010[items_stats_b$Gleichung %in% c(3,4)]
 

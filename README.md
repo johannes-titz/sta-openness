@@ -5,6 +5,21 @@ This repository accompanies the paper *Perceived Liberalism and
 Intellect Cannot Be Reduced to a Single Openness Dimension: A
 State-Trace Experiment*
 
+## Repository contents
+
+- [`materials.md`](materials.md) documents the vignette procedure, all six
+  experimental conditions, the exact German item wording, response scales,
+  outcome measures, manipulation checks, and attention checks.
+- `between.csv` and `within.csv` are the analysis-ready datasets used below.
+- `Main_Study/Data` contains the main exported dataset and its data
+  documentation.
+- `Main_Study/Scripts` contains the detailed original analysis workflow.
+- `Pilot_Study` contains the corresponding pilot-study data, documentation,
+  and scripts.
+
+The repository is connected to the article's anonymous OSF project for peer
+review. The OSF project will be made public for publication.
+
 Note that this repository corresponds to the *article* version of the
 analysis. Compared to the original thesis scripts, the code has been
 substantially shortened and simplified.
@@ -56,7 +71,7 @@ d$iv_se <- forcats::fct_relevel(d$iv_se, c("low", "high"))
 d$iv_ai <- forcats::fct_relevel(d$iv_ai, c("low", "medium", "high"))
 ```
 
-### Manipulation check with C05SE and 098AI:
+### Manipulation check with C05SE and O98AI:
 
 SE: Self-Efficacy AI: Artistic Interest
 
