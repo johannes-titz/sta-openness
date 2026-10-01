@@ -31,7 +31,9 @@ self-descriptions, and that the response scale was:
 | 4 | moderately accurate | trifft eher zu |
 | 5 | accurate | trifft zu |
 
-The English rendering of the vignette introduction used in the article was:
+The study was administered in German. The article reports the following
+English translation of the German vignette introduction; participants saw the
+German original, not this English rendering:
 
 > Ms. N. completes a questionnaire designed to assess her personality. She
 > indicates the extent to which various statements apply to her, using a scale

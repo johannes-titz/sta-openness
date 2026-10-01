@@ -13,6 +13,7 @@ authors:
     affiliation: Chemnitz University of Technology
   - family-names: Gailer
     given-names: Benedikt
+    orcid: "https://orcid.org/0009-0005-3800-6373"
     affiliation: Chemnitz University of Technology
 version: 1.0.0
 date-released: "2026-10-01"
@@ -41,5 +42,6 @@ preferred-citation:
       orcid: "https://orcid.org/0000-0002-1102-5719"
     - family-names: Gailer
       given-names: Benedikt
+      orcid: "https://orcid.org/0009-0005-3800-6373"
   journal: Journal of Research in Personality
   status: in-press

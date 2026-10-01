@@ -3,23 +3,9 @@ title: "STA openness (liberalism and intellect)"
 format: gfm
 ---
 
-## Overview
-
 This repository contains the anonymized data, study materials, and R analysis
 code accompanying the paper *Perceived Liberalism and Intellect Cannot Be
 Reduced to a Single Openness Dimension: A State-Trace Experiment*.
-
-## Repository contents
-
-- [`materials.md`](materials.md) documents the vignette procedure, all six
-  experimental conditions, the exact German item wording, response scales,
-  outcome measures, manipulation checks, and attention checks.
-- `between.csv` and `within.csv` are the analysis-ready datasets used below.
-- `Main_Study/Data` contains the main exported dataset and its data
-  documentation.
-- `Main_Study/Scripts` contains the detailed original analysis workflow.
-- `Pilot_Study` contains the corresponding pilot-study data, documentation,
-  and scripts.
 
 ## Citation
 
@@ -33,6 +19,18 @@ it as:
 Machine-readable citation metadata are provided in
 [`CITATION.cff`](CITATION.cff). Versioned releases of this repository are
 archived on Zenodo.
+
+## Repository contents
+
+- [`materials.md`](materials.md) documents the vignette procedure, all six
+  experimental conditions, the exact German item wording, response scales,
+  outcome measures, manipulation checks, and attention checks.
+- `between.csv` and `within.csv` are the analysis-ready datasets used below.
+- `Main_Study/Data` contains the main exported dataset and its data
+  documentation.
+- `Main_Study/Scripts` contains the detailed original analysis workflow.
+- `Pilot_Study` contains the corresponding pilot-study data, documentation,
+  and scripts.
 
 ## Licensing
 
