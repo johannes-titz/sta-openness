@@ -1145,7 +1145,8 @@ ggplot(data_plot_main, aes(x = x_main, y = y_main)) +
              shape = 18, size = 3) +  # Add predicted Points (Regression)
   geom_line(data = data_iso_main, aes(x = x_iso, y = y_iso), color = "grey", linetype = "dashed") +  # grey curve for Regression model
   geom_errorbar(aes(ymin = y_min, ymax = y_max), width = 0.2) +  # y-Axis Error bars
-  geom_errorbarh(aes(xmin = x_min, xmax = x_max), height = 0.2) +  # Add x-Axis Error Bars
+  geom_errorbar(aes(xmin = x_min, xmax = x_max), orientation = "y",
+                width = 0.2) +  # Add x-Axis Error Bars
   geom_point(aes(shape = Artistic_interests, color = Self_Efficacy), size = 4) +  # Add mean values for Conditions; size = 4 for cex = 1.5
   scale_shape_manual(values = c(19, 17, 15)) +  # Shapes
   scale_color_manual(values = c("blue", "green")) +  # Colors
@@ -1660,7 +1661,8 @@ ggplot(data_plot_main, aes(x = x_main, y = y_main)) +
              shape = 18, size = 3) +  # Add Regression points
   geom_line(data = data_iso_main, aes(x = x_iso, y = y_iso), color = "grey", linetype = "dashed") +  # grey regression curve
   geom_errorbar(aes(ymin = y_min, ymax = y_max), width = 0.2) +     # y-Axis Error bars
-  geom_errorbarh(aes(xmin = x_min, xmax = x_max), height = 0.2) +   # x-Axis error bars
+  geom_errorbar(aes(xmin = x_min, xmax = x_max), orientation = "y",
+                width = 0.2) +   # x-Axis error bars
   geom_point(aes(shape = Artistic_interests, color = Self_Efficacy), size = 4) +   # MVs; size = 4 for cex = 1.5
   scale_color_manual(values = c("blue", "green")) +    # Colors
   scale_shape_manual(values = c(19, 17, 15)) +         # Shapes

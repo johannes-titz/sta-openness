@@ -1,10 +1,10 @@
 cff-version: 1.2.0
 message: >-
-  If you use these data, materials, or analysis code, please cite this
-  archived release. Licensing varies by content; see LICENSE.md.
+  Please cite the accompanying article when using these data, materials, or
+  analysis code. Licensing varies by content; see LICENSE.md.
 title: >-
-  Perceived Liberalism and Intellect Cannot Be Reduced to a Single Openness
-  Dimension: A State-Trace Experiment
+  Data, materials, and analysis code for "Perceived Liberalism and Intellect
+  Cannot Be Reduced to a Single Openness Dimension: A State-Trace Experiment"
 type: software
 authors:
   - family-names: Titz
@@ -30,3 +30,16 @@ keywords:
   - openness to experience
   - personality perception
   - IPIP-NEO-120
+preferred-citation:
+  type: article
+  title: >-
+    Perceived Liberalism and Intellect Cannot Be Reduced to a Single Openness
+    Dimension: A State-Trace Experiment
+  authors:
+    - family-names: Titz
+      given-names: Johannes
+      orcid: "https://orcid.org/0000-0002-1102-5719"
+    - family-names: Gailer
+      given-names: Benedikt
+  journal: Journal of Research in Personality
+  status: in-press

@@ -12,8 +12,8 @@
       "type": "ProjectMember"
     }
   ],
-  "title": "Perceived Liberalism and Intellect Cannot Be Reduced to a Single Openness Dimension: A State-Trace Experiment",
-  "description": "Anonymized data, study materials, and R analysis code accompanying the accepted Journal of Research in Personality article. Licensing varies by content: R code is GPL-3.0-or-later; original data, documentation, and study materials are CC BY 4.0; underlying IPIP items and scales are public domain; and the bundled font is OFL 1.1. See LICENSE.md for scope and third-party notices.",
+  "title": "Data, materials, and analysis code for: Perceived Liberalism and Intellect Cannot Be Reduced to a Single Openness Dimension: A State-Trace Experiment",
+  "description": "Anonymized data, study materials, and R analysis code accompanying the in-press Journal of Research in Personality article by Johannes Titz and Benedikt Gailer. Licensing varies by content: R code is GPL-3.0-or-later; original data, documentation, and study materials are CC BY 4.0; and underlying IPIP items and scales are public domain. See LICENSE.md for scope and third-party notices.",
   "version": "1.0.0",
   "access_right": "open",
   "upload_type": "software",

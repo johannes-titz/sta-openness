@@ -1,9 +1,11 @@
 # STA openness (liberalism and intellect)
 
+## Overview
 
-This repository accompanies the paper *Perceived Liberalism and
-Intellect Cannot Be Reduced to a Single Openness Dimension: A
-State-Trace Experiment*
+This repository contains the anonymized data, study materials, and R
+analysis code accompanying the paper *Perceived Liberalism and Intellect
+Cannot Be Reduced to a Single Openness Dimension: A State-Trace
+Experiment*.
 
 ## Repository contents
 
@@ -17,57 +19,67 @@ State-Trace Experiment*
 - `Pilot_Study` contains the corresponding pilot-study data, documentation,
   and scripts.
 
-Versioned releases of this repository are archived on Zenodo.
+## Citation
 
-## Citation and licensing
+Until the article receives its DOI and final bibliographic details,
+please cite it as:
 
-Citation metadata are provided in [`CITATION.cff`](CITATION.cff). Licensing
-varies by content: the R code is available under GPL-3.0-or-later; original
-data, documentation, and study materials are available under CC BY 4.0; the
-underlying IPIP items and scales are in the public domain; and the bundled
-Charis SIL font remains under OFL 1.1. See [`LICENSE.md`](LICENSE.md) for the
-precise scope and third-party notices.
+> Titz, J., & Gailer, B. (in press). Perceived liberalism and intellect
+> cannot be reduced to a single openness dimension: A state-trace
+> experiment. *Journal of Research in Personality*.
 
-Note that this repository corresponds to the *article* version of the
-analysis. Compared to the original thesis scripts, the code has been
+Machine-readable citation metadata are provided in
+[`CITATION.cff`](CITATION.cff). Versioned releases of this repository are
+archived on Zenodo.
+
+## Licensing
+
+Licensing varies by content: the R code is available under
+GPL-3.0-or-later; original data, documentation, and study materials are
+available under CC BY 4.0; and the underlying IPIP items and scales are
+in the public domain. See [`LICENSE.md`](LICENSE.md) for the precise scope
+and third-party notices.
+
+## Reproducing the article analyses
+
+This README presents the streamlined analyses reported in the article.
+Compared with the original thesis scripts, the code has been
 substantially shortened and simplified.
 
-If you require more detailed data handling or additional analyses,
-please refer to the `Main_Study` folder. Be aware, however, that the
-code there is considerably more difficult to follow. In particular, the
-original implementation relies on the *STACMR-R* scripts, which must be
-installed manually because they are not properly packaged for R.
+For detailed data handling and additional analyses, see the `Main_Study`
+folder. Those original scripts are more complex and rely on the
+*STACMR-R* scripts, which require manual installation.
 
-In the present file, we instead use a wrapper package called *stacmr*,
-which enables a more streamlined and reproducible workflow. If your goal
-is simply to reproduce the reported results or to conduct additional
-analyses using the main dataset, you can proceed with the code below.
+The workflow below instead uses the *stacmr* wrapper package. It is the
+recommended starting point for reproducing the reported results or
+conducting additional analyses with the article dataset.
 
-## Required packages
+### Required software and packages
 
-We begin by loading the required libraries. Throughout this project, we
-use **librarian** as a package manager. If you do not have it installed,
-please install it first or substitute it with your preferred
-alternative.
+The analysis requires a current R installation. The code below uses
+**librarian** to install any missing packages on first use and then load
+them. Install **librarian** once if it is not already available:
 
 ``` r
-# A recent JRP production article uses Charis SIL for body text. The font and its SIL
-# Open Font License are vendored in this repository so figure export does not
-# depend on a machine-wide font installation.
-figure_font <- "Charis SIL"
-font_config <- normalizePath("fonts/fonts.conf", mustWork = TRUE)
-Sys.setenv(FONTCONFIG_FILE = font_config)
-font_match <- system2("fc-match", shQuote(figure_font), stdout = TRUE)
-if (!length(font_match) || !grepl("CharisSIL-Regular.ttf", font_match[[1]], fixed = TRUE)) {
-  stop("The vendored Charis SIL font could not be resolved through fontconfig.")
-}
+install.packages("librarian")
+```
 
-librarian::shelf(car, readr, dplyr, tidyr, effectsize, psych, lsr,
-devtools, monotonicity/stacmr, tidyverse, simpleCache)
+The *stacmr* package depends on **rJava**, so Java must also be installed
+and configured for the same architecture as R. If the package
+installation fails at `rJava`, configure Java for R and then rerun the
+package-loading chunk.
+
+Then load the packages required by the streamlined workflow:
+
+``` r
+librarian::shelf(
+  readr, dplyr, tidyr, forcats, ggplot2, simpleCache,
+  monotonicity/stacmr
+)
 setCacheDir("cache")
 ```
 
-## Between analysis
+### Between-subjects analysis
 
 Load the data:
 
@@ -79,9 +91,10 @@ d$iv_se <- forcats::fct_relevel(d$iv_se, c("low", "high"))
 d$iv_ai <- forcats::fct_relevel(d$iv_ai, c("low", "medium", "high"))
 ```
 
-### Manipulation check with C05SE and O98AI:
+#### Manipulation checks
 
-SE: Self-Efficacy AI: Artistic Interest
+- **SE:** self-efficacy
+- **AI:** artistic interest
 
 The items **C05SE** and **O98AI** served as manipulation checks and were
 not included in the vignette itself. If the vignette successfully
@@ -121,9 +134,9 @@ cor.test(d$O98AI, as.numeric(d$iv_ai), method = "s")
           rho 
     0.7250567 
 
-### STA
+#### State-trace analysis
 
-make long format:
+Reshape the data from wide to long format:
 
 ``` r
 between_long <- as.data.frame(pivot_longer(d,
@@ -191,7 +204,7 @@ res1$estimate
     5 11.07737 10.473684 high, medium       19
     6 14.11149 12.705882   high, high       17
 
-### ST Plot
+#### State-trace plot
 
 Although the *stacmr* package provides a dedicated function for this
 purpose, it does not produce a publication-ready plot. We therefore
@@ -223,7 +236,8 @@ p1 <- ggplot(d_agg, aes(x_mean, y_mean)) +
              shape = 5, size = 3) +  # Add predicted Points (Regression)
   geom_line(data = d_cmr, aes(LibSum, IntSum), color = "grey60", linetype = "dashed") +  # grey curve for Regression model
   geom_errorbar(aes(ymin = y_min, ymax = y_max), color = "grey60", width = 0.2) +  # y-Axis Error bars
-  geom_errorbarh(aes(xmin = x_min, xmax = x_max), color = "grey60", height = 0.2) +  # Add x-Axis Error Bars
+  geom_errorbar(aes(xmin = x_min, xmax = x_max), color = "grey60",
+                orientation = "y", width = 0.2) +  # Add x-Axis Error Bars
   geom_point(aes(shape = `Artistic Interest`, fill = `Self-Efficacy`),
              color = "black", size = 3) +  # open low SE, filled high SE
   scale_shape_manual(values = c(21, 24, 22)) +  # fillable circle, triangle, square
@@ -237,9 +251,8 @@ p1 <- ggplot(d_agg, aes(x_mean, y_mean)) +
   # xlim(4, 20) +
   # ylim(4, 20) +
   
-  theme_bw(base_family = figure_font) +
+  theme_bw() +
   theme(
-    text = element_text(family = figure_font),
     axis.title = element_text(size = 14),
     axis.text = element_text(size = 10),
     legend.title = element_text(size = 12),
@@ -255,21 +268,16 @@ p1 <- ggplot(d_agg, aes(x_mean, y_mean)) +
   ) +
   coord_fixed(ratio = 1) + 
   annotate("text", 12.7, 11.5, label = "dashed line shows\nbest isotonic model",
-           hjust = 0, family = figure_font)
+           hjust = 0)
 ```
-
-    Warning: `geom_errorbarh()` was deprecated in ggplot2 4.0.0.
-    ℹ Please use the `orientation` argument of `geom_errorbar()` instead.
 
 ``` r
 p1
 ```
 
-    `height` was translated to `width`.
-
 ![](README_files/figure-commonmark/unnamed-chunk-7-1.png)
 
-## Within analysis
+### Within-subjects analysis
 
 ``` r
 d <- read_csv("within.csv",
@@ -278,7 +286,7 @@ d <- read_csv("within.csv",
 # correct factor ordering
 d$iv_se <- forcats::fct_relevel(d$iv_se, c("low", "high"))
 d$iv_ai <- forcats::fct_relevel(d$iv_ai, c("low", "medium", "high"))
-within = as.data.frame(d)
+within <- as.data.frame(d)
 ```
 
 ``` r
@@ -338,7 +346,7 @@ res2$estimate
     5 14.00825 16.776786   high, high       1
     6 10.47531  7.625000     low, low       1
 
-### ST Plot
+#### State-trace plot
 
 Although the *stacmr* package provides a dedicated function for this
 purpose, it does not produce a publication-ready plot. We therefore
@@ -378,7 +386,7 @@ d_agg
     low, low     10.854966  7.335096  7.914904
 
 ``` r
-d_agg$iv_comb = rownames(d_agg)
+d_agg$iv_comb <- rownames(d_agg)
 
 d_agg <- d_agg %>%
   separate(iv_comb, into = c("Self-Efficacy", "Artistic Interest"))
@@ -394,7 +402,8 @@ p2 <- ggplot(d_agg, aes(x_mean, y_mean)) +
              shape = 5, size = 3) +  # Add predicted Points (Regression)
   geom_line(data = d_cmr, aes(LibSum, IntSum), color = "grey60", linetype = "dashed") +  # grey curve for Regression model
   geom_errorbar(aes(ymin = y_min, ymax = y_max), color = "grey60", width = 0.2) +  # y-Axis Error bars
-  geom_errorbarh(aes(xmin = x_min, xmax = x_max), color = "grey60", height = 0.2) +  # Add x-Axis Error Bars
+  geom_errorbar(aes(xmin = x_min, xmax = x_max), color = "grey60",
+                orientation = "y", width = 0.2) +  # Add x-Axis Error Bars
   geom_point(aes(shape = `Artistic Interest`, fill = `Self-Efficacy`),
              color = "black", size = 3) +  # open low SE, filled high SE
   scale_shape_manual(values = c(21, 24, 22)) +  # fillable circle, triangle, square
@@ -407,9 +416,8 @@ p2 <- ggplot(d_agg, aes(x_mean, y_mean)) +
    xlim(7, 17.5) +
    ylim(7, 17.5) +
   
-  theme_bw(base_family = figure_font) +
+  theme_bw() +
   theme(
-    text = element_text(family = figure_font),
     axis.title = element_text(size = 14),
     axis.text = element_text(size = 10),
     legend.title = element_text(size = 12),
@@ -425,10 +433,8 @@ p2 <- ggplot(d_agg, aes(x_mean, y_mean)) +
   ) +
   coord_fixed(ratio = 1) + 
   annotate("text", 11.4, 12.25, label = "dashed line shows\nbest isotonic model",
-           hjust = 0, family = figure_font)
+           hjust = 0)
 p2
 ```
-
-    `height` was translated to `width`.
 
 ![](README_files/figure-commonmark/unnamed-chunk-11-1.png)

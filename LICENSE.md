@@ -10,7 +10,7 @@ Johannes Titz and Benedikt Gailer are licensed under the GNU General Public
 License, version 3 or (at your option) any later version
 (`GPL-3.0-or-later`):
 
-<https://www.gnu.org/licenses/gpl-3.0.html>
+[`LICENSES/GPL-3.0-or-later.txt`](LICENSES/GPL-3.0-or-later.txt)
 
 Copyright (c) 2024-2026 Johannes Titz and Benedikt Gailer.
 
@@ -20,7 +20,7 @@ Unless stated otherwise below, the data, documentation, and study materials
 created by Johannes Titz and Benedikt Gailer are licensed under the Creative
 Commons Attribution 4.0 International license (`CC-BY-4.0`):
 
-<https://creativecommons.org/licenses/by/4.0/legalcode>
+[`LICENSES/CC-BY-4.0.txt`](LICENSES/CC-BY-4.0.txt)
 
 Copyright (c) 2024-2026 Johannes Titz and Benedikt Gailer.
 
@@ -43,8 +43,7 @@ CC-BY-4.0 grant above applies only to rights held by the repository authors;
 it does not purport to license any independent third-party rights that may
 subsist in source translations.
 
-## Bundled font and dependencies
+## Dependencies
 
-The bundled Charis SIL font is distributed under the SIL Open Font License
-1.1; see `fonts/OFL.txt`. External R packages and other dependencies remain
-under their respective licenses.
+External R packages and other dependencies remain under their respective
+licenses.

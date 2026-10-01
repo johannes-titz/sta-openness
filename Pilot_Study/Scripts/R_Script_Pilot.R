@@ -663,7 +663,8 @@ ggplot(data_plot_main, aes(x = x_main, y = y_main)) +
              shape = 18, size = 3) +  # Add isotonic regression points
   geom_line(data = data_iso_main, aes(x = x_iso, y = y_iso), color = "grey", linetype = "dashed") +  # Add dashed line connecting the points
   geom_errorbar(aes(ymin = y_min, ymax = y_max), width = 0.1) +  # Add y-axis error bars of condition means
-  geom_errorbarh(aes(xmin = x_min, xmax = x_max), height = 0.1) +  # Add x-axis error bars of condition means
+  geom_errorbar(aes(xmin = x_min, xmax = x_max), orientation = "y",
+                width = 0.1) +  # Add x-axis error bars of condition means
   geom_point(aes(shape = Artistic_interests, color = Self_Efficacy), size = 4) +  # set condition means; size = 4 for cex = 1.5
   scale_shape_manual(values = c(19, 15)) +  # Custom shapes
   scale_color_manual(values = c("blue", "green")) +  # Custom colors
