@@ -142,4 +142,7 @@ accurate.").
 
 The German item translations were adapted from Dege (2018) and Treiber et al.
 (2013), as documented in the article Appendix. The underlying IPIP-NEO-120
-item framework is described by Johnson (2014).
+item framework is described by Johnson (2014). The IPIP items and scales are
+in the public domain; see the official IPIP permission statement at
+<https://ipip.ori.org/newPermission.htm>. See [`LICENSE.md`](LICENSE.md) for
+the scope of the repository authors' license grant and third-party notices.

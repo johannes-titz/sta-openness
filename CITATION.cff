@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: >-
+  If you use these data, materials, or analysis code, please cite this
+  archived release. Licensing varies by content; see LICENSE.md.
+title: >-
+  Perceived Liberalism and Intellect Cannot Be Reduced to a Single Openness
+  Dimension: A State-Trace Experiment
+type: software
+authors:
+  - family-names: Titz
+    given-names: Johannes
+    orcid: "https://orcid.org/0000-0002-1102-5719"
+    affiliation: Chemnitz University of Technology
+  - family-names: Gailer
+    given-names: Benedikt
+    affiliation: Chemnitz University of Technology
+version: 1.0.0
+date-released: "2026-10-01"
+repository-code: "https://github.com/johannes-titz/sta-openness"
+url: "https://github.com/johannes-titz/sta-openness"
+abstract: >-
+  Anonymized data, study materials, and R analysis code accompanying the
+  article "Perceived Liberalism and Intellect Cannot Be Reduced to a Single
+  Openness Dimension: A State-Trace Experiment."
+keywords:
+  - state-trace analysis
+  - dimensionality
+  - intellect
+  - liberalism
+  - openness to experience
+  - personality perception
+  - IPIP-NEO-120

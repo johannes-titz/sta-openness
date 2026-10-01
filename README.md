@@ -17,8 +17,16 @@ State-Trace Experiment*
 - `Pilot_Study` contains the corresponding pilot-study data, documentation,
   and scripts.
 
-The repository is connected to the article's anonymous OSF project for peer
-review. The OSF project will be made public for publication.
+Versioned releases of this repository are archived on Zenodo.
+
+## Citation and licensing
+
+Citation metadata are provided in [`CITATION.cff`](CITATION.cff). Licensing
+varies by content: the R code is available under GPL-3.0-or-later; original
+data, documentation, and study materials are available under CC BY 4.0; the
+underlying IPIP items and scales are in the public domain; and the bundled
+Charis SIL font remains under OFL 1.1. See [`LICENSE.md`](LICENSE.md) for the
+precise scope and third-party notices.
 
 Note that this repository corresponds to the *article* version of the
 analysis. Compared to the original thesis scripts, the code has been
